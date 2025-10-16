@@ -1,7 +1,18 @@
+import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [actors, setActors] = useState([])
+
+  function fetchActors() {
+    axios.get('https://lanciweb.github.io/demo/api/actors/')
+      .then(res => setActors(res.data))
+  }
+
+  useEffect(fetchActors, [])
+
+  console.log(actors);
+
 
   return (
     <>
